@@ -1,0 +1,13 @@
+# Virtual environment
+venv/
+
+# Static files (hasil build, dsb)
+static/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# VSCode / IDE settings
+.vscode/
+.idea/
