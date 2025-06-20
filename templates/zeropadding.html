@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Zero Padding{% endblock %} {% block
+content %}
+<div class="container mt-5">
+  <h2 class="text-center">Zero Padding Citra</h2>
+  <form
+    action="/zeropadding/"
+    enctype="multipart/form-data"
+    method="post"
+    class="mt-4"
+  >
+    <div class="mb-3">
+      <label for="file" class="form-label">Pilih Gambar</label>
+      <input
+        name="file"
+        type="file"
+        accept="image/*"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="padding_size" class="form-label">Ukuran Padding (pixel)</label>
+      <input
+        type="number"
+        name="padding_size"
+        class="form-control"
+        value="10"
+        min="1"
+        max="100"
+        required
+      />
+    </div>
+    <div class="text-center">
+      <input
+        type="submit"
+        value="Terapkan Zero Padding"
+        class="btn btn-primary"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %}
+    

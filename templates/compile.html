@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Kompilasi Pemrosesan Citra</h2>
+    
+    <form action="/compile/" method="post" enctype="multipart/form-data" class="mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="file1">Gambar Utama:</label>
+                    <input type="file" class="form-control" id="file1" name="file1" accept="image/*" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="file2">Gambar Referensi (untuk operasi logika dan histogram specification):</label>
+                    <input type="file" class="form-control" id="file2" name="file2" accept="image/*">
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Proses Semua</button>
+        </div>
+    </form>
+
+    {% if results %}
+    <div class="results mt-4">
+        <h3 class="mb-3">Hasil Pemrosesan</h3>
+        
+        <!-- Operasi Aritmatika -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Operasi Aritmatika</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Penjumlahan</h5>
+                        <img src="{{ results.add }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Pengurangan</h5>
+                        <img src="{{ results.subtract }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Maksimum</h5>
+                        <img src="{{ results.max }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Minimum</h5>
+                        <img src="{{ results.min }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Operasi Logika -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Operasi Logika</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>AND</h5>
+                        <img src="{{ results.logic_and }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4">
+                        <h5>XOR</h5>
+                        <img src="{{ results.logic_xor }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4">
+                        <h5>NOT</h5>
+                        <img src="{{ results.logic_not }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grayscale dan Histogram -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Grayscale dan Histogram</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Grayscale</h5>
+                        <img src="{{ results.grayscale }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Histogram Grayscale</h5>
+                        <img src="{{ results.grayscale_histogram }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Histogram Warna</h5>
+                        <img src="{{ results.color_histogram }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Equalisasi dan Spesifikasi -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Equalisasi dan Spesifikasi</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Equalisasi Histogram</h5>
+                        <img src="{{ results.equalized }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Spesifikasi Histogram</h5>
+                        <img src="{{ results.specified }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter dan Transformasi -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Filter dan Transformasi</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>Konvolusi</h5>
+                        <img src="{{ results.convolution }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Zero Padding</h5>
+                        <img src="{{ results.zero_padding }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Filter Frekuensi</h5>
+                        <img src="{{ results.filter }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Transformasi Fourier</h5>
+                        <img src="{{ results.fourier }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pengurangan Noise -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Pengurangan Noise</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Pengurangan Noise Periodik</h5>
+                        <img src="{{ results.noise_reduction }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %} 

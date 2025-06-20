@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Image Filter{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Filter Citra</h2>
+  <form
+    action="/filter/"
+    enctype="multipart/form-data"
+    method="post"
+    class="mt-4"
+  >
+    <div class="mb-3">
+      <label for="file" class="form-label">Pilih Gambar</label>
+      <input
+        name="file"
+        type="file"
+        accept="image/*"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="filter_type" class="form-label">Pilih Jenis Filter</label>
+      <select name="filter_type" class="form-select" required>
+        <option value="low">Low Pass Filter (Gaussian Blur)</option>
+        <option value="high">High Pass Filter</option>
+        <option value="band">Band Pass Filter</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <input
+        type="submit"
+        value="Terapkan Filter"
+        class="btn btn-primary"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %}

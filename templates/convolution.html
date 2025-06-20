@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Image Convolution{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Konvolusi Citra</h2>
+  <form
+    action="/convolution/"
+    enctype="multipart/form-data"
+    method="post"
+    class="mt-4"
+  >
+    <div class="mb-3">
+      <label for="file" class="form-label">Pilih Gambar</label>
+      <input
+        name="file"
+        type="file"
+        accept="image/*"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="kernel_type" class="form-label">Pilih Kernel</label>
+      <select name="kernel_type" class="form-select" required>
+        <option value="average">Average Blur</option>
+        <option value="sharpen">Sharpen</option>
+        <option value="edge">Edge Detection</option>
+      </select>
+    </div>
+    <div class="text-center">
+      <input
+        type="submit"
+        value="Terapkan Konvolusi"
+        class="btn btn-primary"
+      />
+    </div>
+  </form>
+</div>
+{% endblock %}
