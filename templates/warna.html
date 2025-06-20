@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Modul 7 - Warna{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Modul 7 - Analisis Warna</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4 text-center">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit" class="btn btn-primary ms-2">Proses</button>
+  </form>
+  {% if results %}
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra RGB Asli</h5>
+      <img src="{{ results.rgb_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Kanal Red</h6>
+      <img src="{{ results.r_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Kanal Green</h6>
+      <img src="{{ results.g_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Kanal Blue</h6>
+      <img src="{{ results.b_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra dalam Ruang Warna XYZ</h5>
+      <img src="{{ results.xyz_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Komponen X</h6>
+      <img src="{{ results.x_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Y (Luminans)</h6>
+      <img src="{{ results.y_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Z</h6>
+      <img src="{{ results.z_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra dalam Ruang Warna Lab</h5>
+      <img src="{{ results.lab_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Komponen L (Luminansi)</h6>
+      <img src="{{ results.l_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen a (Hijau-Merah)</h6>
+      <img src="{{ results.a_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen b (Biru-Kuning)</h6>
+      <img src="{{ results.bb_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra dalam Ruang Warna YCbCr</h5>
+      <img src="{{ results.ycbcr_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Komponen Y (Luminansi)</h6>
+      <img src="{{ results.y_ycbcr_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Cb (Chrominance Blue)</h6>
+      <img src="{{ results.cb_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Cr (Chrominance Red)</h6>
+      <img src="{{ results.cr_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra dalam Ruang Warna HSV</h5>
+      <img src="{{ results.hsv_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Komponen Hue</h6>
+      <img src="{{ results.h_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Saturation</h6>
+      <img src="{{ results.s_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Value</h6>
+      <img src="{{ results.v_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Citra dalam Ruang Warna YIQ</h5>
+      <img src="{{ results.yiq_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Komponen Y (Luminansi)</h6>
+      <img src="{{ results.y_yiq_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen I (In-phase)</h6>
+      <img src="{{ results.i_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Komponen Q (Quadrature)</h6>
+      <img src="{{ results.q_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Perbandingan Komponen Luminansi</h5>
+      <img src="{{ results.luminance_compare_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} 

@@ -28,6 +28,29 @@
     <div class="results mt-4">
         <h3 class="mb-3">Hasil Pemrosesan</h3>
         
+        <!-- Modul 1: Array RGB -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4>Modul 1: Nilai Array RGB</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Kanal Merah (Red)</h5>
+                        <pre class="bg-light p-2 rounded" style="font-size:0.8em; max-height:300px; overflow-y:auto;">{{ results.red_array_str }}</pre>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Kanal Hijau (Green)</h5>
+                        <pre class="bg-light p-2 rounded" style="font-size:0.8em; max-height:300px; overflow-y:auto;">{{ results.green_array_str }}</pre>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Kanal Biru (Blue)</h5>
+                        <pre class="bg-light p-2 rounded" style="font-size:0.8em; max-height:300px; overflow-y:auto;">{{ results.blue_array_str }}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Operasi Aritmatika -->
         <div class="card mb-4">
             <div class="card-header">
@@ -157,6 +180,284 @@
                     <div class="col-md-12">
                         <h5>Pengurangan Noise Periodik</h5>
                         <img src="{{ results.noise_reduction }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modul 5: Canny, Chaincode, Proyeksi Integral -->
+        <div class="card mb-4">
+            <div class="card-header bg-info text-white">
+                <h4>Modul 5: Canny, Chaincode, Proyeksi Integral</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <h5>Canny Edge Detection</h5>
+                        <img src="{{ results.canny }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Chaincode (Kontur Terbesar)</h5>
+                        <img src="{{ results.chaincode_img }}" class="img-fluid mb-2">
+                        <pre class="bg-light p-2 rounded" style="font-size:0.9em; max-height:150px; overflow-y:auto;">{{ results.chaincode_text }}</pre>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Proyeksi Integral</h5>
+                        <img src="{{ results.proyeksi_integral }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modul 6: Kompresi -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h4>Modul 6: Kompresi Gambar</h4>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h5>Gambar Asli</h5>
+                        <img src="{{ results.original_path }}" class="img-fluid mb-2 rounded">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ukuran: {{ results.original_size }} KB</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Lossy (JPEG Q=90)</h5>
+                        <img src="{{ results.lossy_path }}" class="img-fluid mb-2 rounded">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ukuran: {{ results.lossy_size }} KB</li>
+                            <li class="list-group-item">Rasio: {{ results.lossy_ratio }}</li>
+                            <li class="list-group-item">PSNR: {{ results.lossy_psnr }} dB</li>
+                            <li class="list-group-item">SSIM: {{ results.lossy_ssim }}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Lossless (PNG L=9)</h5>
+                        <img src="{{ results.lossless_path }}" class="img-fluid mb-2 rounded">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ukuran: {{ results.lossless_size }} KB</li>
+                            <li class="list-group-item">Rasio: {{ results.lossless_ratio }}</li>
+                            <li class="list-group-item">PSNR: {{ results.lossless_psnr }} dB</li>
+                            <li class="list-group-item">SSIM: {{ results.lossless_ssim }}</li>
+                            <li class="list-group-item">Identik: {{ results.lossless_identical }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modul 7: Warna -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h4>Modul 7: Analisis Warna</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra RGB Asli</h5>
+                        <img src="{{ results.warna_rgb_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Kanal Red</h6>
+                        <img src="{{ results.warna_r_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Kanal Green</h6>
+                        <img src="{{ results.warna_g_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Kanal Blue</h6>
+                        <img src="{{ results.warna_b_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra dalam Ruang Warna XYZ</h5>
+                        <img src="{{ results.warna_xyz_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen X</h6>
+                        <img src="{{ results.warna_x_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Y (Luminans)</h6>
+                        <img src="{{ results.warna_y_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Z</h6>
+                        <img src="{{ results.warna_z_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra dalam Ruang Warna Lab</h5>
+                        <img src="{{ results.warna_lab_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen L (Luminansi)</h6>
+                        <img src="{{ results.warna_l_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen a (Hijau-Merah)</h6>
+                        <img src="{{ results.warna_a_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen b (Biru-Kuning)</h6>
+                        <img src="{{ results.warna_bb_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra dalam Ruang Warna YCbCr</h5>
+                        <img src="{{ results.warna_ycbcr_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Y (Luminansi)</h6>
+                        <img src="{{ results.warna_y_ycbcr_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Cb (Chrominance Blue)</h6>
+                        <img src="{{ results.warna_cb_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Cr (Chrominance Red)</h6>
+                        <img src="{{ results.warna_cr_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra dalam Ruang Warna HSV</h5>
+                        <img src="{{ results.warna_hsv_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Hue</h6>
+                        <img src="{{ results.warna_h_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Saturation</h6>
+                        <img src="{{ results.warna_s_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Value</h6>
+                        <img src="{{ results.warna_v_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Citra dalam Ruang Warna YIQ</h5>
+                        <img src="{{ results.warna_yiq_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Y (Luminansi)</h6>
+                        <img src="{{ results.warna_y_yiq_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen I (In-phase)</h6>
+                        <img src="{{ results.warna_i_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Komponen Q (Quadrature)</h6>
+                        <img src="{{ results.warna_q_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Perbandingan Komponen Luminansi</h5>
+                        <img src="{{ results.warna_luminance_compare_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modul 7: Tekstur -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h4>Modul 7: Analisis Tekstur</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6 text-center">
+                        <h5>Citra RGB Asli</h5>
+                        <img src="{{ results.tekstur_rgb_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h5>Citra Grayscale</h5>
+                        <img src="{{ results.tekstur_gray_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 text-center">
+                        <h6>Rerata Lokal</h6>
+                        <img src="{{ results.tekstur_mean_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Variansi Lokal</h6>
+                        <img src="{{ results.tekstur_variance_path }}" class="img-fluid mb-2">
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Deviasi Standar Lokal</h6>
+                        <img src="{{ results.tekstur_stddev_path }}" class="img-fluid mb-2">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6 text-center">
+                        <h5>Matriks GLCM (jarak=1, sudut=0)</h5>
+                        <img src="{{ results.tekstur_glcm_matrix_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h5>Properti GLCM (jarak=1, sudut=0)</h5>
+                        <table class="table table-bordered text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Kontras</th>
+                                    <th>Dissimilarity</th>
+                                    <th>Homogeneity</th>
+                                    <th>Energy</th>
+                                    <th>Correlation</th>
+                                    <th>ASM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ results.tekstur_glcm_contrast }}</td>
+                                    <td>{{ results.tekstur_glcm_dissimilarity }}</td>
+                                    <td>{{ results.tekstur_glcm_homogeneity }}</td>
+                                    <td>{{ results.tekstur_glcm_energy }}</td>
+                                    <td>{{ results.tekstur_glcm_correlation }}</td>
+                                    <td>{{ results.tekstur_glcm_asm }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-6 text-center">
+                        <h5>Peta Tekstur LBP</h5>
+                        <img src="{{ results.tekstur_lbp_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h5>Histogram LBP</h5>
+                        <img src="{{ results.tekstur_lbp_hist_path }}" class="img-fluid rounded shadow mb-3">
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 text-center">
+                        <h5>Visualisasi Filter Gabor</h5>
+                        <img src="{{ results.tekstur_gabor_path }}" class="img-fluid rounded shadow mb-3">
                     </div>
                 </div>
             </div>

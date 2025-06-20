@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Proyeksi Integral{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Proyeksi Integral</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4 text-center">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit" class="btn btn-primary ms-2">Proses</button>
+  </form>
+  {% if projection_image_path %}
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <img src="{{ projection_image_path }}" class="img-fluid rounded shadow mb-3" alt="Proyeksi Integral">
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="/proyeksi_integral/" class="btn btn-secondary">Coba Gambar Lain</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} 

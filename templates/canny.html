@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Canny Edge Detection{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Canny Edge Detection</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4 text-center">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit" class="btn btn-primary ms-2">Proses</button>
+  </form>
+  {% if original_image_path and blurred_image_path and canny_image_path %}
+  <div class="row">
+    <div class="col-md-4">
+      <h5 class="text-center">Citra Asli</h5>
+      <img src="{{ original_image_path }}" class="img-fluid rounded shadow mb-3" alt="Citra Asli">
+    </div>
+    <div class="col-md-4">
+      <h5 class="text-center">Grayscale + Gaussian Blur</h5>
+      <img src="{{ blurred_image_path }}" class="img-fluid rounded shadow mb-3" alt="Blurred">
+    </div>
+    <div class="col-md-4">
+      <h5 class="text-center">Hasil Canny</h5>
+      <img src="{{ canny_image_path }}" class="img-fluid rounded shadow mb-3" alt="Canny">
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="/canny/" class="btn btn-secondary">Coba Gambar Lain</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} 

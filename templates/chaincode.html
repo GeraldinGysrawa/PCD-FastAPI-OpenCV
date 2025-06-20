@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Chaincode{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Freeman Chaincode</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4 text-center">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit" class="btn btn-primary ms-2">Proses</button>
+  </form>
+  {% if original_image_path and binary_image_path and contour_image_path and chaincode_text %}
+  <div class="row">
+    <div class="col-md-3">
+      <h6 class="text-center">Citra Asli</h6>
+      <img src="{{ original_image_path }}" class="img-fluid rounded shadow mb-3" alt="Citra Asli">
+    </div>
+    <div class="col-md-3">
+      <h6 class="text-center">Citra Biner</h6>
+      <img src="{{ binary_image_path }}" class="img-fluid rounded shadow mb-3" alt="Citra Biner">
+    </div>
+    <div class="col-md-3">
+      <h6 class="text-center">Kontur Terbesar</h6>
+      <img src="{{ contour_image_path }}" class="img-fluid rounded shadow mb-3" alt="Kontur">
+    </div>
+    <div class="col-md-3">
+      <h6 class="text-center">Kode Rantai</h6>
+      <pre class="bg-white p-2 rounded shadow-sm" style="font-size: 0.9em; max-height: 300px; overflow-y: auto;">{{ chaincode_text }}</pre>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="/chaincode/" class="btn btn-secondary">Coba Gambar Lain</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} 

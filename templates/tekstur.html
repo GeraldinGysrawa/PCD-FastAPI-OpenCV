@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Modul 7 - Tekstur{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center">Modul 7 - Analisis Tekstur</h2>
+  <form method="post" enctype="multipart/form-data" class="mb-4 text-center">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit" class="btn btn-primary ms-2">Proses</button>
+  </form>
+  {% if results %}
+  <div class="row mb-4">
+    <div class="col-md-6 text-center">
+      <h5>Citra RGB Asli</h5>
+      <img src="{{ results.rgb_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+    <div class="col-md-6 text-center">
+      <h5>Citra Grayscale</h5>
+      <img src="{{ results.gray_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-4 text-center">
+      <h6>Rerata Lokal</h6>
+      <img src="{{ results.mean_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Variansi Lokal</h6>
+      <img src="{{ results.variance_path }}" class="img-fluid mb-2">
+    </div>
+    <div class="col-md-4 text-center">
+      <h6>Deviasi Standar Lokal</h6>
+      <img src="{{ results.stddev_path }}" class="img-fluid mb-2">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-6 text-center">
+      <h5>Matriks GLCM (jarak=1, sudut=0)</h5>
+      <img src="{{ results.glcm_matrix_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+    <div class="col-md-6 text-center">
+      <h5>Properti GLCM (jarak=1, sudut=0)</h5>
+      <table class="table table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Kontras</th>
+            <th>Dissimilarity</th>
+            <th>Homogeneity</th>
+            <th>Energy</th>
+            <th>Correlation</th>
+            <th>ASM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ results.glcm_contrast }}</td>
+            <td>{{ results.glcm_dissimilarity }}</td>
+            <td>{{ results.glcm_homogeneity }}</td>
+            <td>{{ results.glcm_energy }}</td>
+            <td>{{ results.glcm_correlation }}</td>
+            <td>{{ results.glcm_asm }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-6 text-center">
+      <h5>Peta Tekstur LBP</h5>
+      <img src="{{ results.lbp_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+    <div class="col-md-6 text-center">
+      <h5>Histogram LBP</h5>
+      <img src="{{ results.lbp_hist_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12 text-center">
+      <h5>Visualisasi Filter Gabor</h5>
+      <img src="{{ results.gabor_path }}" class="img-fluid rounded shadow mb-3">
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} 
